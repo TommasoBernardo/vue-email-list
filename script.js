@@ -8,22 +8,16 @@ let app = new Vue({
     },
 
     mounted(){
-        //uso una variabile per contenere this
-        const cont = this;
-
         //creo un ciclo for per creare le 10 email randomiche
         for( let i = 0 ; i < 10 ; i++){
             //api
             axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-            .then(function(generatedEmail){
-                cont.email = generatedEmail.data.response;
-                //visualizzo 
-                console.log(cont.email);
+            .then((generatedEmail)=>{
                 //pusho le email nell'array
-                cont.emails.push(cont.email);
+                this.emails.push(generatedEmail);
             })
         }
         //visualizzo emails
-        console.log(cont.emails);
+        console.log(this.emails);
     }
 })
