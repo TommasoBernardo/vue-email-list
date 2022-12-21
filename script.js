@@ -13,6 +13,7 @@ let app = new Vue({
             //api
             axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
             .then((generatedEmail)=>{
+                this.email = generatedEmail.data.response;
                 //pusho le email nell'array
                 this.emails.push(generatedEmail);
             })
